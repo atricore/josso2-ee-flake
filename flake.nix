@@ -3,18 +3,39 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = {nixpkgs, ...}: let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
+  outputs = {
+    nixpkgs,
+    flake-utils,
+    ...
+  }:
+    flake-utils.lib.eachDefaultSystem
+    (system: let
+      inherit
+        (rec {
+          pkgs = nixpkgs.legacyPackages.${system};
 
-    packages.${system} = import ./server/server.nix {
-      inherit (pkgs) stdenv;
-      inherit (pkgs) lib;
-      jdk = pkgs.jdk8_headless;
-    };
-  in {
-    inherit packages;
-  };
+          # Server package
+          server = with pkgs;
+            import ./server/server.nix {
+              inherit stdenv lib system;
+              jdk = jdk8_headless;
+            };
+
+          # Docker image
+          docker = import ./server/container.nix {
+            inherit pkgs server;
+          };
+
+          packages = server // docker;
+        })
+        packages
+        ;
+    in rec {
+      # JOSSO Server package
+      inherit packages;
+      defaultPackage = packages.josso-ee-26;
+    });
 }
