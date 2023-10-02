@@ -16,17 +16,17 @@
       inherit
         (rec {
           pkgs = nixpkgs.legacyPackages.${system};
+          jdk = pkgs.jdk8_headless;
 
           # Server package
           server = with pkgs;
             import ./server/server.nix {
-              inherit stdenv lib system;
-              jdk = jdk8_headless;
+              inherit stdenv lib system jdk;
             };
 
           # Docker image
           docker = import ./server/container.nix {
-            inherit pkgs server;
+            inherit pkgs jdk server;
           };
 
           packages = server // docker;

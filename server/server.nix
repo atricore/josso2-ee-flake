@@ -14,7 +14,7 @@
       version = "${jversion}-${jupdate}";
 
       src = fetchTarball {
-        url = "file:///wa/josso/josso2-ee/${jversion}/distributions/josso-ee/target/josso-ee-${jversion}-SNAPSHOT-server-unix.tar.gz";
+        url = "file:///wa/josso/josso2-ee/${jversion}/distributions/josso-ee/target/josso-ee-${jversion}-SNAPSHOT-server-unix.tar.gz?invalidateCache=6";
         #url = "http://downloads.atricore.com/eap/josso-ee-${jversion}-SNAPSHOT-server-unix.tar.gz";
         sha256 = "${jsha}";
       };
@@ -26,6 +26,7 @@
         chmod u+x "$out/bin/atricore"
         chmod u+x "$out/bin/start"
         chmod u+x "$out/bin/stop"
+        chmod u+x "$out/bin/dstart"
       '';
 
       # TODO : Configuration options: port, extensions, followRedirects, cfg folder ?
@@ -49,6 +50,8 @@ in {
   josso-ee-26 = build {
     jversion = "2.6.2";
     jupdate = "1";
-    jsha = "0nv65za31zwfgw0zqcgsa3xvirzpyhkgzc97c46h8nvdm7sdr1yh";
+    #jsha = "0z54wj4lcq1cg12pvr5s4sfcfsw26kk4y272hapcdi3bi24sx5sp";
+    #jsha = "188x4wadd8q7n774qp8ck3yyd5y8npb3nsqf3bpp5chm2q3n0f8l";
+    jsha = "0qfcrs4cg0mw0fgd90l458ws9qmhllkqvnwm4bmv32grlpcm6njy";
   };
 }
