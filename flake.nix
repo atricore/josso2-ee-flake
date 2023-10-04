@@ -36,6 +36,6 @@
     in rec {
       # JOSSO Server package
       inherit packages;
-      defaultPackage = packages.josso-ee-26;
+      defaultPackage = packages.josso-ee;
     });
 }
