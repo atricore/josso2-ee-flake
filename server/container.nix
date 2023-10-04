@@ -3,15 +3,24 @@
   server,
   jdk,
   ...
-}: let
-in {
+}: {
   josso-ee-26-img = pkgs.dockerTools.buildImage {
     name = "atricore/josso-ee";
     tag = "2.6.2-1";
 
     copyToRoot = pkgs.buildEnv {
       name = "root-image";
-      paths = [jdk pkgs.bashInteractive pkgs.gnugrep pkgs.procps pkgs.coreutils];
+      paths = with pkgs; [
+        jdk
+        bashInteractive
+        gnugrep
+        gnused
+        gnutar
+        gzip
+        wget
+        procps
+        coreutils
+      ];
       pathsToLink = ["/bin"];
     };
 
@@ -25,13 +34,14 @@ in {
     '';
 
     config = {
-      WorkingDir = "${server.josso-ee-26}/bin";
+      WorkingDir = "/server";
       Cmd = [
         "${server.josso-ee-26}/bin/dstart"
       ];
       ExportedPorts = [8081];
       Env = [
         "JAVA_HOME=${jdk}"
+        "KARAF_HOME=${server.josso-ee-26}"
         "KARAF_BASE=/server"
         "KARAF_DATA=/server/data"
       ];
