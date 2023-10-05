@@ -49,7 +49,8 @@
 in {
   josso-ee = build {
     jversion = "2.6.2";
-    jupdate = "1";
-    jsha = "0r43ffasqvvvqy45fvx9g4q3pkbggpdizcsd3q5i3nv82j8jzwnl";
+    jupdate = "2";
+    #jsha = "0r43ffasqvvvqy45fvx9g4q3pkbggpdizcsd3q5i3nv82j8jzwnl";
+    jsha = "1r8fhs1jiscgs61sy0jz2011mzw72p0zfv1g6nz6g283hjq8vxrj";
   };
 }
