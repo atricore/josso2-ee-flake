@@ -2,7 +2,7 @@
   stdenv,
   lib,
   jdk,
-  system,
+  ...
 }: let
   build = {
     jversion,
@@ -14,8 +14,8 @@
       version = "${jversion}-${jupdate}";
 
       src = fetchTarball {
-        url = "file:///wa/josso/josso2-ee/${jversion}/distributions/josso-ee/target/josso-ee-${jversion}-SNAPSHOT-server-unix.tar.gz?invalidateCache=6";
-        #url = "http://downloads.atricore.com/eap/josso-ee-${jversion}-SNAPSHOT-server-unix.tar.gz";
+        #url = "file:///wa/josso/josso-ee-flake/tmp/josso-ee-${jversion}-${jupdate}-server.tar.gz?invalidateCache=1";
+        url = "http://downloads.atricore.com/eap/josso-ee-${jversion}-${jupdate}-server.tar.gz";
         sha256 = "${jsha}";
       };
 
@@ -29,7 +29,7 @@
         chmod u+x "$out/bin/dstart"
       '';
 
-      # TODO : Configuration options: port, extensions, followRedirects, cfg folder ?
+      # Configuration options: port, extensions, followRedirects, cfg folder ?
 
       meta = with lib; {
         homepage = "https://josso.atricore.com/";
@@ -47,11 +47,9 @@
       };
     };
 in {
-  josso-ee-26 = build {
+  josso-ee = build {
     jversion = "2.6.2";
-    jupdate = "1";
-    #jsha = "0z54wj4lcq1cg12pvr5s4sfcfsw26kk4y272hapcdi3bi24sx5sp";
-    #jsha = "188x4wadd8q7n774qp8ck3yyd5y8npb3nsqf3bpp5chm2q3n0f8l";
-    jsha = "0qfcrs4cg0mw0fgd90l458ws9qmhllkqvnwm4bmv32grlpcm6njy";
+    jupdate = "8";
+    jsha = "04xnzmq3h3n1gqmgxgx4v1rpx1bnr1g2h7733vz0qsyzqanfxwf1";
   };
 }

@@ -18,13 +18,13 @@
           pkgs = nixpkgs.legacyPackages.${system};
           jdk = pkgs.jdk8_headless;
 
-          # Server package
+          # Server package build instructions
           server = with pkgs;
             import ./server/server.nix {
               inherit stdenv lib system jdk;
             };
 
-          # Docker image
+          # Docker image build instructions
           docker = import ./server/container.nix {
             inherit pkgs jdk server;
           };
@@ -36,6 +36,6 @@
     in rec {
       # JOSSO Server package
       inherit packages;
-      defaultPackage = packages.josso-ee-26;
+      defaultPackage = packages.josso-ee;
     });
 }
