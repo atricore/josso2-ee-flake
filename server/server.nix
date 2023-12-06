@@ -14,8 +14,8 @@
       version = "${jversion}-${jupdate}";
 
       src = fetchTarball {
-        #url = "file:///wa/josso/josso-ee-flake/tmp/josso-ee-${jversion}-${jupdate}-server.tar.gz?invalidateCache=1";
-        url = "http://downloads.atricore.com/eap/josso-ee-${jversion}-${jupdate}-server.tar.gz";
+        url = "file:///wa/josso/josso-ee-flake/tmp/josso-ee-${jversion}-${jupdate}-server.tar.gz?invalidateCache=1";
+        #url = "http://downloads.atricore.com/eap/josso-ee-${jversion}-${jupdate}-server.tar.gz";
         sha256 = "${jsha}";
       };
 
@@ -49,7 +49,8 @@
 in {
   josso-ee = build {
     jversion = "2.6.2";
-    jupdate = "8";
-    jsha = "04xnzmq3h3n1gqmgxgx4v1rpx1bnr1g2h7733vz0qsyzqanfxwf1";
+    jupdate = "unstable";
+    #jsha = "04xnzmq3h3n1gqmgxgx4v1rpx1bnr1g2h7733vz0qsyzqanfxwf1";
+    jsha = "";
   };
 }
