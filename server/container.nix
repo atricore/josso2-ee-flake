@@ -54,7 +54,7 @@
     };
 in {
   josso-ee-img = build {
-    jversion = "2.6.2-8";
+    jversion = "2.6.2-9";
     jserver = server.josso-ee;
   };
 }
