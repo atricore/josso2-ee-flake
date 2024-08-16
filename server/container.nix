@@ -10,7 +10,7 @@
     jserver,
   }:
     pkgs.dockerTools.buildImage {
-      name = "atricore/josso-ee";
+      name = "ghcr.io/atricore/josso-ee";
       tag = jversion;
 
       copyToRoot = pkgs.buildEnv {
@@ -54,7 +54,7 @@
     };
 in {
   josso-ee-img = build {
-    jversion = "2.6.2-unstable";
+    jversion = "2.6.3-unstable";
     jserver = server.josso-ee;
   };
 }
