@@ -34,6 +34,7 @@
         mkdir -p ./server/data/log
         mkdir -p ./server/system
         cp -r ${jserver}/etc ./server/
+        cp -r ${jserver}/extensions ./server/
         chmod -R u+w ./server
         cp -r ${jserver}/etc/container/* ./server/etc/
       '';
