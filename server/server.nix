@@ -5,14 +5,13 @@
   jossoVersion,
   ...
 }: let
-  build = { version, update, sha256 }:
+  build = { version, update,  sha256, filePath, ... }:
     stdenv.mkDerivation {
       pname = "josso-ee";
       version = "${version}-${update}";
 
       src = fetchTarball {
-        url = "file:///wa/iam/josso/josso2-ee-flake/tmp/josso-ee-${version}-${update}-server.tar.gz?invalidateCache=1";
-        #url = "http://downloads.atricore.com/eap/josso-ee-${version}-${update}-server.tar.gz";
+        url = filePath;
         sha256 = "${sha256}";
       };
 
@@ -26,8 +25,6 @@
         chmod u+x "$out/bin/dstart"
         chmod u+x "$out/bin/config"
       '';
-
-      # Configuration options: port, extensions, followRedirects, cfg folder ?
 
       meta = with lib; {
         homepage = "https://josso.atricore.com/";

@@ -2,7 +2,13 @@
 
 # Create Docer image for JOSSO server
 
-1. Update version and update number in `server.nix` and `container.nix` if necessary.  
+1. Update File
+
+This will update the flake.nix file to the latest JOSSO zip file
+
+```sh
+./update-hash.sh
+```
 
 2. Build image
 
