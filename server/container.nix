@@ -2,16 +2,14 @@
   pkgs,
   server,
   jdk,
+  jossoVersion,
   ...
 }: let
-  # Generif fn to buld a josso-ee docker image
-  build = {
-    jversion,
-    jserver,
-  }:
+  # Generic fn to build a josso-ee docker image
+  build = { version, update, jserver }:
     pkgs.dockerTools.buildImage {
       name = "ghcr.io/atricore/josso-ee";
-      tag = jversion;
+      tag = "${version}-${update}";
 
       copyToRoot = pkgs.buildEnv {
         name = "root-image";
@@ -55,7 +53,8 @@
     };
 in {
   josso-ee-img = build {
-    jversion = "2.6.2-11";
+    version = jossoVersion.version;
+    update = jossoVersion.update;
     jserver = server.josso-ee;
   };
 }

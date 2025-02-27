@@ -2,21 +2,18 @@
   stdenv,
   lib,
   jdk,
+  jossoVersion,
   ...
 }: let
-  build = {
-    jversion,
-    jupdate,
-    jsha,
-  }:
+  build = { version, update, sha256 }:
     stdenv.mkDerivation {
       pname = "josso-ee";
-      version = "${jversion}-${jupdate}";
+      version = "${version}-${update}";
 
       src = fetchTarball {
-        url = "file:///wa/iam/josso/josso2-ee-flake/tmp/josso-ee-${jversion}-${jupdate}-server.tar.gz?invalidateCache=1";
-        #url = "http://downloads.atricore.com/eap/josso-ee-${jversion}-${jupdate}-server.tar.gz";
-        sha256 = "${jsha}";
+        url = "file:///wa/iam/josso/josso2-ee-flake/tmp/josso-ee-${version}-${update}-server.tar.gz?invalidateCache=1";
+        #url = "http://downloads.atricore.com/eap/josso-ee-${version}-${update}-server.tar.gz";
+        sha256 = "${sha256}";
       };
 
       buildInputs = [jdk];
@@ -48,11 +45,5 @@
       };
     };
 in {
-  josso-ee = build {
-    jversion = "2.6.2";
-    jupdate = "11";
-    #jsha = "1fz0d90k6qrn8x5aw826746af6pc0n9v03423z6q0dsp86qqxqpa";
-    #jsha = "0b9kxyrna2778dv2975iyxyma4790ygxgcznhxsi46jl0gbb3zjm";
-    jsha = "1f0ll56vwcwsaczm6x7ylzc5jg7v4af9zklvrxv75jrgx793mf7z";
-  };
+  josso-ee = build jossoVersion;
 }
