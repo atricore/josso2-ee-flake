@@ -12,6 +12,8 @@ This will update the flake.nix file to the latest JOSSO zip file
 
 2. Build image
 
+You can use the `--rebuild` flag to force a build.
+
 ``` sh
 nix build .#josso-ee-img
 ```

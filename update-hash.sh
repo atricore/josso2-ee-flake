@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
         set -e
 
-        BUILD_NUMBER="1"
+        BUILD_NUMBER="2"
         NEW_HASH="16r6xnq0d0yvl5sgwic265bmm38xk8irwqbzz5y5vig0d2s4zwai"
 
         echo "Build    # $BUILD_NUMBER"
