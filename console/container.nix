@@ -32,7 +32,6 @@
         mkdir -p ./console/tmp
         mkdir -p ./console/data
         mkdir -p ./console/log
-        mkdir -p ./console/git
         chmod u+rw ./console
       '';
 
