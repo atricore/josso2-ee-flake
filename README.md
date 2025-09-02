@@ -4,11 +4,7 @@
 
 1. Update File
 
-This will update the flake.nix file to the latest JOSSO zip file
-
-```sh
-./update-hash.sh
-```
+Update the flake.nix file to the latest JOSSO zip file
 
 2. Build image
 
