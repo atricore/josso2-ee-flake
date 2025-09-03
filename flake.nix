@@ -27,7 +27,7 @@
           inherit (jossoConfig) version update jossoUpdate;
           #sha256 = "0841y7azjba32h24241yza5rf4aznyxzbc7msw51s8rd7x566v9w";
           sha256 = "0r09kcy8ry1rvsrij44cybq9dj6fgdjz333i3rv40img029vivr2";
-          filePath = "file:///wa/iam/josso/josso2-ee-flake/tmp/josso-ee-2.6.3-SNAPSHOT-server-unix.tar.gz?invalidateCache=5.4";
+          filePath = "file:///wa/iam/josso/josso2-ee-flake/tmp/josso-ee-2.6.3-SNAPSHOT-server-unix.tar.gz?invalidateCache=5.6";
         };
 
         consoleVersion = {
