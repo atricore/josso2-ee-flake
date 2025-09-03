@@ -15,7 +15,7 @@
         # JOSSO version and hash configuration - edit these values when updating
         jossoConfig = rec {
           version = "2.6.3";
-          jossoUpdate = "4";
+          jossoUpdate = "5";
           # Path to the server package file
           # Build ID is first 8 chars of hash
           getBuildId = hash: builtins.substring 0 8 hash;
@@ -25,14 +25,15 @@
         # Complete JOSSO version information
         jossoVersion = {
           inherit (jossoConfig) version update jossoUpdate;
-          sha256 = "0qrqf9lj4w4jribrv0ipdqmlhvgr92h93rs6m6dv1hh0idkbb4hb";
-          filePath = "file:///wa/iam/josso/josso2-ee-flake/tmp/josso-ee-2.6.3-SNAPSHOT-server-unix.tar.gz?invalidateCache=4";
+          #sha256 = "0841y7azjba32h24241yza5rf4aznyxzbc7msw51s8rd7x566v9w";
+          sha256 = "0r09kcy8ry1rvsrij44cybq9dj6fgdjz333i3rv40img029vivr2";
+          filePath = "file:///wa/iam/josso/josso2-ee-flake/tmp/josso-ee-2.6.3-SNAPSHOT-server-unix.tar.gz?invalidateCache=5.3";
         };
 
         consoleVersion = {
           inherit (jossoConfig) version update jossoUpdate;
-          sha256 = "1wdrvx9knkpppvd0yy40p2sm1kfw14j6rc6i40m89555vyd66zm5";
-          filePath = "file:///wa/iam/josso/josso2-ee-flake/tmp/josso-ee-2.6.3-SNAPSHOT-console-unix.tar.gz?invalidateCache=3";
+          sha256 = "";
+          filePath = "file:///wa/iam/josso/josso2-ee-flake/tmp/josso-ee-2.6.3-SNAPSHOT-console-unix.tar.gz?invalidateCache=5.1";
         };
 
         # Server package build instructions

@@ -4,7 +4,12 @@
 
 1. Update File
 
-Update the flake.nix file to the latest JOSSO zip file
+Update the flake.nix file after adding the new binaries to the ./tmp folder.
+
+Change:
+- jossoConfig.version (if neded)
+- jossoConfig.jossoUpdate
+- jossoVersion.filePath: change file name and query param so that nix rebuilds the content (if file name is the same it uses cached value in store)
 
 2. Build image
 
@@ -29,3 +34,5 @@ The push refers to repository [docker.io/atricore/josso-ee]
 dfea5d3d84a0: Pushed
 2.6.2-9: digest: sha256:c2627b8bda6a1db1e532f0dd490413b1c241f40831cf49f90db987b7371a3bef size: 529
 ```
+
+5. For console, do the same
